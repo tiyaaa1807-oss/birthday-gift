@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 🤍</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #5c1a1a, #f8cfcf, #f5e6dc);
+    color: #333;
+    overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Opening */
+#opening {
+    background: rgba(0,0,0,0.3);
+    color: white;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #ff9aa2;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #ff6f7d;
+}
+
+/* Hidden fade animation */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Secret */
+#secret {
+    display: none;
+    background: #fff0f0;
+}
+
+.secret-btn {
+    margin-top: 30px;
+    font-size: 14px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.secret-btn:hover {
+    opacity: 1;
+}
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}
+</style></head><body><section id="opening">
+    <h1>Hai kamu... 🤍</h1>
+    <p>Ada sesuatu yang aku simpan di sini.  
+    Bukan barang. Bukan hadiah biasa.  
+    Tapi sesuatu yang mungkin... kamu rasain.</p><button class="button" onclick="startJourney()">Buka pelan-pelan ya</button>
+
+</section><section class="fade">
+    <h2>Kita mulai dari awal ya...</h2>
+    <p>Aku masih inget pertama kali kita ngobrol.  
+    Biasa aja sih kelihatannya... tapi entah kenapa, dari situ semuanya mulai beda.</p><p>Dari yang cuma sekadar chat, jadi kebiasaan.  
+Dari yang cuma kenal, jadi... ya kamu sekarang 🤍</p>
+
+</section><section class="fade">
+    <h2>Hal kecil yang ternyata besar</h2>
+    <p>Kayak kamu yang selalu nanya “udah makan belum?”  
+    Atau cara kamu ceritain hal yang kadang random banget.</p><p>Hal-hal kecil yang mungkin kamu anggap biasa,  
+tapi justru itu yang paling aku inget.</p>
+
+</section><section class="fade">
+    <h2>Fun fact tentang kamu 😆</h2>
+    <p>Kamu tuh kadang nyebelin... tapi bikin kangen.  
+    Suka ngilang bentar, tapi selalu balik lagi.</p><p>Dan anehnya, aku selalu nunggu.</p>
+
+</section><section class="fade">
+    <h2>Terima kasih ya</h2>
+    <p>Makasih udah ada sampai sejauh ini.  
+    Makasih udah jadi bagian dari hari-hari aku.</p><p>Walaupun kita nggak selalu sempurna,  
+tapi aku suka cara kita tetap jalan bareng.</p>
+
+<div class="secret-btn" onclick="openSecret()">psst... klik ini ya</div>
+
+</section><section id="secret">
+    <h2>Ini bagian rahasia 🤍</h2>
+    <p>Jujur ya...  
+    Aku nggak selalu pintar ngungkapin semuanya.</p><p>Tapi kalau boleh sederhana,  
+aku cuma mau bilang...</p>
+
+<h1>Aku sayang kamu.</h1>
+
+<p>Semoga di ulang tahun kamu ini,  
+kamu makin bahagia, makin kuat,  
+dan... tetap jadi kamu yang aku kenal.</p>
+
+<p>Dan kalau boleh minta sedikit...  
+tetap di sini ya, sama aku 🤍</p>
+
+</section><script>
+function startJourney() {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+    });
+}
+
+function openSecret() {
+    document.getElementById('secret').style.display = 'flex';
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+// fade on scroll
+const fades = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+    fades.forEach(f => {
+        const rect = f.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            f.classList.add('show');
+        }
+    });
+});
+
+// floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 800);
+</script></body>
+</html>
